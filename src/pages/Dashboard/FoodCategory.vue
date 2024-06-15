@@ -1,27 +1,34 @@
 <template>
-  <div class="grid grid-cols-3 md:grid-cols-7 gap-4">
+  <div class="grid grid-cols-3 gap-4 md:grid-cols-7">
     <div
-      class="p-5 rounded-3xl hover:bg-white box-shadow duration-200 ease-linear relative"
+      class="relative p-5 duration-200 ease-linear rounded-3xl hover:bg-white box-shadow"
       :class="index === categoryIndx ? 'shadows bg-white' : 'bg-green-50'"
       v-for="(item, index) in category"
       :key="index"
       @click="$emit('food-category', item.label), categoryIndex(index)"
     >
-      <img class="w-14 m-auto" :src="item.src" alt="" />
+      <img class="m-auto w-14" :src="item.src" alt="" />
       <p class="mt-2 text-center line-clamp-1">{{ item.label }}</p>
     </div>
   </div>
 </template>
 <script setup>
 import { ref } from "vue";
+import allImg from "@/assets/images/all.png";
+import burgerImg from "@/assets/images/burger.png";
+import pizzaImg from "@/assets/images/pizza.png";
+import fruitsImg from "@/assets/images/fruits.png";
+import cupcakeImg from "@/assets/images/cupcake.png";
+import icecreamImg from "@/assets/images/icecream.png";
+import drinksImg from "@/assets/images/drinks.png";
 const category = ref([
-  { label: "Vegetarian", src: "src/assets/images/all.png" },
-  { label: "Burgers", src: "src/assets/images/burger.png" },
-  { label: "Pizza", src: "src/assets/images/pizza.png" },
-  { label: "Fruits", src: "src/assets/images/fruits.png" },
-  { label: "Cakes", src: "src/assets/images/cupcake.png" },
-  { label: "IceCreams", src: "src/assets/images/icecream.png" },
-  { label: "Drinks", src: "src/assets/images/drinks.png" },
+  { label: "Vegetarian", src: allImg },
+  { label: "Burgers", src: burgerImg },
+  { label: "Pizza", src: pizzaImg },
+  { label: "Fruits", src: fruitsImg },
+  { label: "Cakes", src: cupcakeImg },
+  { label: "IceCreams", src: icecreamImg },
+  { label: "Drinks", src: drinksImg },
 ]);
 const categoryIndx = ref(0);
 const categoryIndex = (index) => {
